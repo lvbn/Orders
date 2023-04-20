@@ -12,5 +12,5 @@ export default function Login() {
         <button className={styles.button} >Log in</button>
       </form>
     </div>
-            )
+  )
 }

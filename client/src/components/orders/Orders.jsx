@@ -1,11 +1,11 @@
 import styles from './Orders.module.css'
 
-import orders from '../../data/mock_2.json'
+// import orders from '../../data/mock_2.json'
 import Selection from '../selection/Selection'
 import { fullfilment_status, payment_status, delivery_status } from '../../utilities/utilities'
 
-export default function Orders() {
-  console.log(orders)
+export default function Orders({orders}) {
+
   return (
     <>
       <div className={styles.container}>
@@ -22,10 +22,10 @@ export default function Orders() {
         </div>
         <ul className={styles.ul}>
           {orders.map(order => (
-            <li key={order.order_id}>
+            <li key={order.id}>
               <div className={styles.tableRow}>
-                <p>{order.order_id}</p>
-                <p>{order.name}</p>
+                <p>{order.id}</p>
+                <p>{order.ourClient}</p>
                 <p>{order.date}</p>
                 <p>{order.quantity}</p>
                 <p>{order.charge}</p>
