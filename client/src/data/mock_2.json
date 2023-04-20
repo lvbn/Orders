@@ -1,0 +1,38 @@
+[
+  {
+    "order_id": 1,
+    "category": [],
+    "tags": [
+      "t-shirt",
+      "sommer",
+      "design"
+    ],
+    "fullfilment_status": "start",
+    "delivery_status": "in facility",
+    "payment": "payed",
+    "date": "01/02/23",
+    "booking_id": 1,
+    "quantity": 10,
+    "address": {
+      "name": "Luiz Victorio",
+      "last_name": "Baptista Neto",
+      "street": "Willy-Brandt Straße",
+      "number": 25,
+      "apartment": 713,
+      "additional_information": "Adina Hotel",
+      "reference": "Near the Hamburg Süd",
+      "ZIP": null
+    },
+    "payment_method": "Credit Card",
+    "name": "Business A",
+    "last_name": "Baptista Neto",
+    "email": "luiz.neto.v@gmail.com",
+    "phone": "+55 (48) 99173-5993",
+    "charge": "750,00",
+    "payment_status": "payed",
+    "ip_address": "123.345.567",
+    "product_id": 1,
+    "color": "Black",
+    "print": "Yellow Images"
+  }
+]

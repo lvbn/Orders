@@ -1,0 +1,61 @@
+.container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  width: fit-content;
+  height: calc(100vh - 150px);
+  margin: 150px 0px 0px 0px;
+  padding: 0 40px;
+
+  background-color: #1E1E1E;
+}
+
+.menuItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  border-radius: 10px;
+  padding: 14px 12px;
+  margin: 0 0 6px 0;
+
+  width: fit-content
+}
+
+.container > div > p {
+  margin: 0 0 0 12px;
+  color: #838383;
+}
+
+.container > div:hover {
+  background-color: #2C2C2C;
+  cursor: pointer;
+}
+
+.container > div.selected {
+  background-color: #2C2C2C;
+}
+/* .container > div:hover > p {
+  color: #68C4C6;
+  cursor: pointer;
+} */
+
+.container > div:hover > p {
+  color: #68C4C6;
+}
+
+.container > div:not(:last-child):hover  > img {
+  filter: invert(95%) sepia(69%) saturate(1621%) hue-rotate(153deg) brightness(85%) contrast(78%);
+}
+
+.container > div.logout:hover > p {
+  color: #BE0000;
+}
+
+.logout {
+  margin-bottom: 20px;
+  margin-top: auto;
+}
