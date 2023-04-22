@@ -7,16 +7,4 @@ async function main() {
   console.log('MongoDB connected via mongoose ✅')
 }
 
-// const orderSchema = new mongoose.Schema({
-//   id: Number,
-//   ourClient: String,
-//   date: Date,
-//   quantity: Number,
-//   charge: Number,
-//   payment: String,
-//   fullfilment: String,
-//   finalClient: String,
-//   delivery: String
-// });
-
 module.exports = { mongoose };

@@ -1,4 +1,13 @@
 const { getAll, postOne, updateOne, createUser } = require('../model/model')
+const jwt = require('jsonwebtoken')
+
+// create token
+const maxAge = 3 * 24 * 60 * 60;
+const createToken = (id) => {
+  return jwt.sign({ id }, 'secret', {
+    // expiresIn: maxAge
+  })
+}
 
 const getOrders = async (req, res) => {
   // console.log('reached the controller')
@@ -42,8 +51,13 @@ const signUp = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await createUser(email, password)
+    const token = createToken(user._id)
     res.status(201)
-    res.send(user)
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      // maxAge: maxAge * 1000
+    })
+    res.json({user: user._id})
   } catch (error) {
     res.status(400)
     res.json({error})

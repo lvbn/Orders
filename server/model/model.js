@@ -1,15 +1,13 @@
 const { userSchema, orderSchema } = require('../database/models')
 const { mongoose } = require('../database/db')
 const bcrypt = require('bcrypt')
+// const jwt = require('jsonwebtoken')
 
 // save a function after doc is saved to the db
 // these middlewares have to be declared before compiling a model
 // https://mongoosejs.com/docs/middleware.html#defining
-userSchema.post('save', function (doc, next) {
-  console.log('new order created', doc)
-  next()
-})
 
+// hashing password
 userSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt()
   this.password = await bcrypt.hash(this.password, salt)
@@ -41,6 +39,16 @@ const handleErrors = (errors) => {
   return errs;
 }
 
+// // create token
+// const maxAge = 3 * 24 * 60 * 60;
+// const createToken = (id) => {
+//   return jwt.sign({ id }, 'the dashboard secret', {
+//     expiresIn: maxAge
+//   })
+// }
+
+// HTTP REQUESTS
+
 const getAll = async () => {
   const orders = await Orders.find()
   return orders
@@ -48,32 +56,18 @@ const getAll = async () => {
 
 const postOne = async (order) => {
   // console.log('in the model: ', order)
-  // const newOrder = new Orders({
-  //   id: order.id,
-  //   ourClient: order.ourClient,
-  //   date: order.date,
-  //   quantity: order.quantity,
-  //   charge: order.charge,
-  //   payment: order.payment,
-  //   fullfilment: order.fullfilment,
-  //   finalClient: order.finalClient,
-  //   delivery: order.delivery
-  // })
-
-  // return await newOrder.save()
-
   try {
     const newOrder = await Orders.create({
-        id: order.id,
-        ourClient: order.ourClient,
-        date: order.date,
-        quantity: order.quantity,
-        charge: order.charge,
-        payment: order.payment,
-        fullfilment: order.fullfilment,
-        finalClient: order.finalClient,
-        delivery: order.delivery
-      })
+      id: order.id,
+      ourClient: order.ourClient,
+      date: order.date,
+      quantity: order.quantity,
+      charge: order.charge,
+      payment: order.payment,
+      fullfilment: order.fullfilment,
+      finalClient: order.finalClient,
+      delivery: order.delivery
+    })
     return newOrder
   } catch (error) {
     console.log(error)
