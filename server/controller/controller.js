@@ -1,4 +1,4 @@
-const { getAll, postOne } = require('../model/model')
+const { getAll, postOne, updateOne, createUser } = require('../model/model')
 
 const getOrders = async (req, res) => {
   // console.log('reached the controller')
@@ -26,4 +26,29 @@ const postOrder = (req, res) => {
   }
 }
 
-module.exports = { getOrders, postOrder }
+const putOrder = async (req, res) => {
+  // console.log('testing put request: ', req.body)
+  try {
+    const order = await updateOne(req.body)
+    // console.log(order)
+    // res.json({message: 'ok'})
+    res.send(order)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const signUp = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await createUser(email, password)
+    res.status(201)
+    res.send(user)
+  } catch (error) {
+    res.status(400)
+    res.json({error})
+    console.log(error)
+  }
+}
+
+module.exports = { getOrders, postOrder, putOrder, signUp }
