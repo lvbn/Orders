@@ -20,11 +20,12 @@
 }
 
 .dashboard {
-  width: 200px;
+  width: 400px;
   margin: 0;
   padding: 0;
   color: #68C4C6;
   margin-right: 40px;
+  cursor: pointer;
 }
 
 .form {
@@ -49,8 +50,24 @@
   background: #2C2C2C;
 }
 
+.signupButton,
+.loginButton {
+  height: 40px;
+  width: fit-content;
+  padding: 0 20px;
+  color: white;
+  background-color: #68C4C6;
+
+  border-radius: 10px;
+  border: none;
+
+  margin-right:10px;
+
+  cursor: pointer;
+}
+
 .userInfo {
-  width: 200px;
+  width: 400px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
