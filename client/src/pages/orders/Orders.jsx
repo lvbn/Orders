@@ -1,20 +1,26 @@
 import styles from './Orders.module.css'
 import Orders from '../../components/orders/Orders'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { addOrders } from "../../store/actions";
+import { useDispatch } from "react-redux";
 
 export default function () {
-
-  const [orders, setOrders] = useState([])
-
-  let navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const routeChange = (path) => {
     navigate(path)
   }
 
   useEffect(() => {
-    fetch('http://localhost:3000/orders')
+    fetch('http://localhost:3000/orders', {
+      method: "GET",
+        headers: {
+          "Content-type": "application/json"
+        },
+        // credentials: 'include'
+    })
       .then(response => {
         if (response.ok) {
           return response.json()
@@ -22,8 +28,7 @@ export default function () {
         throw new Error('unable to fetch data')
       })
       .then(data => {
-        setOrders([...data])
-        // console.log('data: ', data)
+        dispatch(addOrders(data))
       })
       .catch(error => {
         console.log('Catched error: ', error)
@@ -43,7 +48,7 @@ export default function () {
         >Create Order</button>
       </div>
 
-      <Orders orders={orders}/>
+      <Orders />
     </div>
   )
 }

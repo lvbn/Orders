@@ -1,75 +1,136 @@
+/*
+
+HOW TO MAKE TABLE SCROLL WITH FIXED HEADER:
+TAKE AWAYS:
+1. in the table -> border-spacing: 0px;
+2. create table wrapper;
+3. in the wrapper properties -> overflow: scroll;
+4. in the th (thead > tr > th) position: sticky; top: 0px;
+afterhttps://github.com/zangetsu-isshin/fixed-header-css/tree/main
+https://www.youtube.com/watch?v=bJMWrI0MoBw
+
+*/
+
+.tableWrapper {
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  border-radius: 10px 10px 0 0;
+  background-color: #2C2C2C;
+  overflow: scroll
+}
+
 .container {
   position: relative;
 
   width: 100%;
-  height: 100%;
   background-color: #2C2C2C;
 
   box-sizing: border-box;
-  margin-top: 50px;
-  padding: 20px;
+  padding: 0 20px 0 20px;
   border-radius: 10px 10px 0 0;
 
-  list-style-type: none;
+  color: rgb(191, 191, 191);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  table-layout: fixed;
+  border-spacing: 0px;
 }
 
-.ul {
-  list-style-type: none;
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
-  margin-top: 50px;
-  overflow: scroll;
-  box-sizing: border-box;
+.tableHead>tr>th,
+.tableBody>tr>td {
+  text-align: initial;
+  height: 55px;
 }
 
-.ul > li {
-  height: 40px;
-  box-sizing: border-box;
+.tableHead>tr>th:first-child,
+.tableBody>tr>td:first-child {
+  width: fit-content !important;
 }
 
-.tableHeader, .tableRow {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  box-sizing: border-box;
-  border-radius: 3px;
-  /* padding-top: 20px; */
-}
+.tableHead>tr>th {
+  position: sticky;
+  padding: 0px;
+  top: 0px;
+  z-index: 2;
 
-.tableHeader {
-  position: absolute;
-  box-sizing: border-box;
-  top: 20px;
-  padding: 0 20px;
-  height: 50px;
+
   background-color: #2C2C2C;
 }
-.tableRow > p, .tableHeader > p {
-  flex: 1;
-  margin: 10px 10px;
-  color: white;
-  box-sizing: border-box;
+
+.tableHead>tr>td {
+  z-index: 1;
 }
 
-.tableHeader > p {
-  font-weight: bold;
+.tableBody {
+  overflow-y: auto;
 }
 
-.tableRow:hover {
-  background-color: #484747;
-}
-/* .tableBody {
-  height: fit-content;
-}
-
-.container td{
-  line-height: 35px;
+/* .tableBody > tr:last-child {
+  height:100%;
 } */
+
+.tableRow {
+  height: 40px;
+}
+
+
+
+
+/* styling the selectors */
+.selectContainer {
+  position: relative;
+}
+
+.select {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
+  height: 40px;
+  padding: 8px 15px;
+  /* background-color: #272626; */
+  background-color: #1E1E1E;
+  color: rgb(191, 191, 191);
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  /* hide caret in FireFox */
+  -moz-appearance: none;
+  /* hide caret in Chrome */
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+/* hide caret in IE10 */
+.select::-ms-expand {
+  display: none;
+}
+
+
+.select:hover {
+  /* -webkit-box-shadow: 0px 0px 5px 0px rgba(104, 196, 198, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(104, 196, 198, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(104, 196, 198, 0.75); */
+
+  background-color: rgb(56, 56, 56);
+}
+
+.bg_stage_1 {
+  color: crimson;
+  background-color: rgb(255, 199, 210) !important;
+}
+
+.bg_stage_2 {
+  color: rgb(220, 183, 20);
+  background-color: rgb(255, 243, 192) !important;
+}
+
+.bg_stage_3 {
+  color: rgb(16, 162, 130);
+  background-color: rgb(205, 255, 244) !important;
+}
+
+/* styling the selectors */

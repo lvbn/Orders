@@ -1,11 +1,13 @@
 .container {
 
   display: flex;
+  /* display: none; */
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 
-  width: fit-content;
+  /* width: fit-content; */
+  width: 160px;
   height: calc(100vh - 150px);
   margin: 150px 0px 0px 0px;
   padding: 0 40px;

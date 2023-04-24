@@ -10,10 +10,12 @@
   justify-content: flex-start;
   align-items: center;
 
-  padding: 0 40px 0 40px;
+  /* padding: 0 40px 0 40px; */
+  padding-left: 40px;
   border: none;
 
   margin-top: 150px;
+  margin-right: 240px;
 }
 
 .header {

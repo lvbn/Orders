@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './App.css'
 
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
@@ -10,7 +10,6 @@ import Sidebar from './components/sidebar/Sidebar'
 import AddOrder from './components/addOrder/addOrder'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     // <BrowserRouter>

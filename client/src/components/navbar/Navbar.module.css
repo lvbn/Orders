@@ -20,13 +20,11 @@
 }
 
 .dashboard {
+  width: 200px;
   margin: 0;
   padding: 0;
   color: #68C4C6;
-}
-
-.form {
-  height: inherit;
+  margin-right: 40px;
 }
 
 .form {
@@ -52,8 +50,9 @@
 }
 
 .userInfo {
+  width: 200px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 

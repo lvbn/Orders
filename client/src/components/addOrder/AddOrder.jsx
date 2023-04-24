@@ -1,14 +1,28 @@
 import { useState } from 'react'
 import styles from './AddOrder.module.css'
+import Selection from '../selection/Selection';
+import { payment_status, fullfilment_status, delivery_status } from '../../utilities/utilities';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+
+import { addOrder } from "../../store/actions";
 
 export default function AddOrder() {
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch();
 
   // handling multi-line forms with one single handleChange function for each input type
   // https://www.pluralsight.com/guides/handling-multiple-inputs-with-single-onchange-handler-react
   const [state, setState] = useState({
     id: '',
     ourClient: '',
-    quantity,
+    quantity: '',
+    payment: '',
+    charge: '',
+    finalClient: '',
+    date: '',
+    fullfilment: ''
   })
 
   const handleChange = (e) => {
@@ -17,16 +31,14 @@ export default function AddOrder() {
       ...state,
       [e.target.name]: value
     })
-    // console.log(state)
   }
-
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const baseUrl = 'http://localhost:3000'
 
-    const postEvent = async (order) => {
+    const postOrder = async (order) => {
       const response = await fetch(baseUrl + '/orders', {
         method: "POST",
         body: JSON.stringify(order),
@@ -36,7 +48,9 @@ export default function AddOrder() {
       })
       return await response.json()
     }
-    postEvent(state)
+    postOrder(state)
+    dispatch(addOrder(state))
+    navigate('/orders')
   }
 
   return (
@@ -47,44 +61,78 @@ export default function AddOrder() {
           <p>Orders</p>
           <h1>Add New Order</h1>
         </div>
-        <button
-          className={styles.deleteButton}
-          onClick={() => routeChange('/addorder')}
-        >Cancel</button>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit}>
         <h1>New Order</h1>
 
         <label htmlFor='id'>ID</label>
-        <input type='text' id='id' name='id' value={state.id} onChange={handleChange}></input>
+        <input type='number' id='id' name='id' value={state.id} onChange={handleChange}></input>
 
         <label htmlFor='ourClient'>Our client</label>
         <input type='text' id='ourClient' name='ourClient' value={state.ourClient} onChange={handleChange}></input>
 
-        {/* create handle change for date */}
         <label htmlFor='date'>Date</label>
-        <input type='datetime-local' id='date' name='date'></input>
+        <input type='datetime-local' id='date' name='date' value={state.date} onChange={handleChange}></input>
 
         <label htmlFor='quantity'>Quantity</label>
         <input type='number' id='quantity' name='quantity' value={state.quantity} onChange={handleChange}></input>
 
         <label htmlFor='charge'>Charge</label>
-        <input type='text' id='charge' name='charge'></input>
+        <input type='number' id='charge' name='charge' value={state.charge} onChange={handleChange}></input>
 
-        <label htmlFor='payment'>Payment</label>
-        <input type='text' id='payment' name='payment'></input>
+        <label htmlFor='finalClient'>Final client</label>
+        <input type='text' id='finalClient' name='finalClient' value={state.finalClient} onChange={handleChange}></input>
 
-        <label htmlFor='fullfilment'>Fullfilment</label>
-        <input type='text' id='fullfilment' name='fullfilment'></input>
+        <div className={styles.selectors}>
 
-        <label htmlFor='final_client'>Final client</label>
-        <input type='text' id='final_client' name='final_client'></input>
+          <div className={styles.selector}>
+            <label htmlFor='payment'>Fullfilment</label>
+            <select className={styles.select} name='payment' value={state.payment} onChange={handleChange}>
+              {payment_status.map(status => (
+                <option key={status.id} value={status.status}>{status.status}</option>
+              ))}
+            </select>
+          </div>
 
-        <label htmlFor='delivery'>Delivery</label>
-        <input type='text' id='delivery' name='delivery'></input>
+          <div className={styles.selector}>
+            <label htmlFor='fullfilment'>Fullfilment</label>
+            <select className={styles.select} name='fullfilment' value={state.fullfilment} onChange={handleChange}>
+              {fullfilment_status.map(status => (
+                <option key={status.id} value={status.status}>{status.status}</option>
+              ))}
+            </select>
+          </div>
 
-        <button className={styles.addButton} >Add Order</button>
+          <div className={styles.selector}>
+            <label htmlFor='delivery'>Fullfilment</label>
+            <select className={styles.select} name='delivery' value={state.delivery} onChange={handleChange}>
+              {delivery_status.map(status => (
+                <option key={status.id} value={status.status}>{status.status}</option>
+              ))}
+            </select>
+          </div>
+
+        </div>
+
+        <div className={styles.buttons}>
+
+          <button
+            type='button'
+            className={styles.cancelButton}
+            onClick={() => navigate('/orders')}
+          >
+            Cancel
+          </button>
+
+          <button
+            type='submit'
+            className={styles.addButton}
+          >
+            Add Order
+          </button>
+
+        </div>
       </form>
     </div>
   )

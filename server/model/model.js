@@ -97,6 +97,7 @@ const updateOne = async (idAndField) => {
 
 
 const createUser = async (email, password) => {
+  // console.log('signup request - model')
   try {
     const user = await User.create({
       email: email,

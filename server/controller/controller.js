@@ -49,12 +49,15 @@ const putOrder = async (req, res) => {
 
 const signUp = async (req, res) => {
   const { email, password } = req.body;
+  // console.log('signup request - controller')
   try {
     const user = await createUser(email, password)
     const token = createToken(user._id)
     res.status(201)
     res.cookie('jwt', token, {
       httpOnly: true,
+      sameSite: 'none',
+      secure: true,
       // maxAge: maxAge * 1000
     })
     res.json({user: user._id})

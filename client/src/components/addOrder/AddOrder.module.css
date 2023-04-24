@@ -10,10 +10,12 @@
   justify-content: flex-start;
   align-items: center;
 
-  padding: 0 40px 0 40px;
+  /* padding: 0 40px 0 40px; */
+  padding-left: 40px;
   border: none;
 
   margin-top: 150px;
+  margin-right: 240px;
 }
 
 .header {
@@ -31,23 +33,6 @@
 
 .pageTitle > h1 {
   margin: 0;
-}
-
-.deleteButton {
-  width: fit-content;
-  height: 38px;
-
-  padding: 0 20px;
-
-  color: white;
-  background-color: #BE0000;
-
-  font-weight: bold;
-
-  border: none;
-  border-radius: 10px;
-
-  cursor: pointer;
 }
 
 .form {
@@ -92,15 +77,37 @@
   outline: solid 2px #68C4C6;
 }
 
-.addButton {
-  color: #68C4C6;
-  background-color: #1E1E1E;
-
-  height: 50px;
+.selectors {
   width: 100%;
-  padding: 10px;
 
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.selector {
+  display: flex;
+  flex-direction: column;
+}
+
+.selector > label {
+  margin: 15px 0 5px 0px;
+  color: #68C4C6;
+}
+
+
+.cancelButton {
+  width: fit-content;
+  height: 50px;
+
+  padding: 0 20px;
+  /* margin-right: -200px; */
+
+  color: white;
+  background-color: #424242;
+
+  font-weight: bold;
 
   border: none;
   border-radius: 10px;
@@ -108,6 +115,79 @@
   cursor: pointer;
 }
 
-.button:hover {
-  background-color: #232323;
+.cancelButton:hover {
+  background-color: #BE0000;
+  color: #ffffff;
+  font-weight: bolder;
+}
+
+.addButton {
+  color: #ffffff;
+  background-color: #1E1E1E;
+
+  height: 50px;
+  width: 100%;
+  padding: 10px;
+
+  border: none;
+  border-radius: 10px;
+
+  font-weight: bolder;
+  cursor: pointer;
+}
+
+.addButton:hover {
+  background-color: #68C4C6;
+  /* color: #232323; */
+  font-weight: bolder;
+}
+
+.buttons {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* styling the selectors */
+.selectContainer {
+  position: relative;
+}
+
+.select {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: fit-content;
+  height: 40px;
+  padding: 8px 15px;
+  /* background-color: #272626; */
+  background-color: #1E1E1E;
+  color: rgb(191, 191, 191);
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  /* hide caret in FireFox */
+  -moz-appearance: none;
+  /* hide caret in Chrome */
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+/* hide caret in IE10 */
+.select::-ms-expand {
+  display: none;
+}
+
+
+.select:hover {
+  /* -webkit-box-shadow: 0px 0px 5px 0px rgba(104, 196, 198, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(104, 196, 198, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(104, 196, 198, 0.75); */
+
+  background-color: rgb(56, 56, 56);
 }
