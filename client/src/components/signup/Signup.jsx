@@ -1,10 +1,12 @@
+import styles from './Signup.module.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import styles from './Login.module.css'
 
-export default function Login() {
+export default function Signup() {
 
   const navigate = useNavigate()
+  const [emailErrorMessage, setEmailMessageError] = useState('')
+  const [passwordErrorMessage, setPasswordMessageError] = useState('')
 
   const [newUser, setNewUser] = useState({
     email: '',
@@ -23,16 +25,16 @@ export default function Login() {
     e.preventDefault()
     // console.log(newUser)
 
-    const baseUrl = 'http://localhost:3000'
+    const baseUrl = 'http://127.0.0.1:3000'
 
     try {
-      const res = await fetch(baseUrl, {
+      await fetch(baseUrl, {
         method: "POST",
         body: JSON.stringify(newUser),
         headers: {
           "Content-type": "application/json"
         },
-        // credentials: 'include'
+        credentials: 'include'
       })
       .then(response => {
         if (response.ok) {
@@ -42,7 +44,19 @@ export default function Login() {
       })
       .then(data => {
         console.log('logando data: ', data, data.user)
-        if (data.user) navigate('/orders')
+
+        if (data.responseUser && (data.responseUser.email ||  data.responseUser.password)) {
+          setEmailMessageError(data.responseUser.email)
+          setPasswordMessageError(data.responseUser.password)
+        } else {
+          setEmailMessageError('ok')
+          setPasswordMessageError('ok')
+          setTimeout(() => {
+            if (data.user) navigate('/login')
+          }, 1000)
+        }
+
+        // if (data.user) navigate('/orders')
         // if (data.user) location.assign('/orders')
       })
     } catch (error) {
@@ -53,7 +67,7 @@ export default function Login() {
   return (
     <div className={styles.container}>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <h1>Log in</h1>
+        <h1>Sign up</h1>
 
         <label htmlFor='email'>Email</label>
         <input
@@ -62,7 +76,9 @@ export default function Login() {
           name='email'
           value={newUser.email}
           onChange={handleChange}
-          required></input>
+          required
+        />
+        <div className={styles.errorMessage}>{emailErrorMessage}</div>
 
         <label htmlFor='password'>Password</label>
         <input
@@ -71,9 +87,11 @@ export default function Login() {
           name='password'
           value={newUser.password}
           onChange={handleChange}
-          required></input>
+          required
+        />
+        <div className={styles.errorMessage}>{passwordErrorMessage}</div>
 
-        <button className={styles.button} >Log in</button>
+        <button className={styles.button} >Sign up</button>
       </form>
     </div>
   )

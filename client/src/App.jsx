@@ -7,7 +7,9 @@ import Navbar from './components/navbar/Navbar'
 import Home from './pages/home/Home'
 import Orders from './pages/orders/Orders'
 import Sidebar from './components/sidebar/Sidebar'
-import AddOrder from './components/addOrder/addOrder'
+import AddOrder from './components/addOrder/AddOrder'
+import Signup from './components/signup/Signup'
+import Login from './components/login/Login'
 
 function App() {
 
@@ -31,7 +33,9 @@ function App() {
       <div className="App">
       <Sidebar />
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route exact path='/' element={<Home />} />
+        <Route exact path='/signup' element={<Signup />}/>
+        <Route exact path='/login' element={<Login />}/>
         <Route exact path='/orders' element={<Orders />} />
         <Route exact path='/addorder' element={<AddOrder />} />
       </Routes>

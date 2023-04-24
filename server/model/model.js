@@ -20,7 +20,7 @@ const User = mongoose.model('user', userSchema)
 
 // handle errors
 const handleErrors = (errors) => {
-  console.log(errors.message, errors.code)
+  // console.log(errors.message, errors.code)
   const errs = { email: '', password: ''};
 
   // duplicate error  code
@@ -98,6 +98,7 @@ const updateOne = async (idAndField) => {
 
 const createUser = async (email, password) => {
   // console.log('signup request - model')
+  let errors;
   try {
     const user = await User.create({
       email: email,
@@ -105,7 +106,12 @@ const createUser = async (email, password) => {
     })
     return user;
   } catch (error) {
-    const errors = handleErrors(error)
+    errors = handleErrors(error)
+    // console.log('error - model: ', errors)
+    // return errors
+  }
+
+  if (errors) {
     return errors
   }
 }

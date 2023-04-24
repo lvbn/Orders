@@ -1,6 +1,7 @@
 import styles from './Home.module.css'
 
-import Login from '../../components/login/Login'
+// import Login from '../../components/login/Login'
+import Signup from '../../components/signup/Signup'
 
 export default function Home() {
   return (
@@ -13,7 +14,8 @@ export default function Home() {
         {/* <button className={styles.button}>Create Order</button> */}
       </div>
 
-    <Login />
+    {/* <Login /> */}
+    <Signup />
     </div>
   )
 }

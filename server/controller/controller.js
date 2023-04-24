@@ -49,22 +49,30 @@ const putOrder = async (req, res) => {
 
 const signUp = async (req, res) => {
   const { email, password } = req.body;
-  // console.log('signup request - controller')
+  let responseUser;
+  // console.log(email, password)
   try {
-    const user = await createUser(email, password)
-    const token = createToken(user._id)
-    res.status(201)
-    res.cookie('jwt', token, {
-      httpOnly: true,
-      sameSite: 'none',
-      secure: true,
-      // maxAge: maxAge * 1000
-    })
-    res.json({user: user._id})
+    responseUser = await createUser(email, password)
+
+    if (responseUser._id) {
+      const token = createToken(responseUser._id)
+      console.log('OK: ', responseUser)
+      res.status(201)
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,
+        // maxAge: maxAge * 1000
+      })
+      res.json({ user: responseUser._id })
+    } else {
+      console.log('NOT OK: ', responseUser)
+      res.json({responseUser})
+    }
   } catch (error) {
     res.status(400)
-    res.json({error})
-    console.log(error)
+    responseUser = res.json(error) // ?
+    // console.log('signup error: ', error)
   }
 }
 
