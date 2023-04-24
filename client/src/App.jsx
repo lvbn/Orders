@@ -8,25 +8,12 @@ import Home from './pages/home/Home'
 import Orders from './pages/orders/Orders'
 import Sidebar from './components/sidebar/Sidebar'
 import AddOrder from './components/addOrder/AddOrder'
-import Signup from './components/signup/Signup'
-import Login from './components/login/Login'
+import Signup from './pages/signup/Signup'
+import Login from './pages/login/Login'
 
 function App() {
 
   return (
-    // <BrowserRouter>
-    //   <div className="App">
-    //     <Routes>
-    //       {/* <Route path='/' element={<Home />} /> */}
-    //       <Route exact path='orders' element={<Orders />} />
-    //     </Routes>
-    //     <Navbar />
-    //     <div className='container'>
-    //       <Sidebar />
-    //       <Orders />
-    //     </div>
-    //   </div>
-    // </BrowserRouter>
 
     <BrowserRouter>
       <Navbar />
@@ -41,6 +28,7 @@ function App() {
       </Routes>
       </div>
     </BrowserRouter>
+
   )
 }
 

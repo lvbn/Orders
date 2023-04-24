@@ -1,9 +1,21 @@
-.container {
-  height: 100%;
+/* .container {
+
+  background: #1E1E1E;
+  position: relative;
+
+  box-sizing: border-box;
+  flex-grow:1;
+  height: calc(100vh - 150px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+
+  padding-left: 40px;
+  border: none;
+
+  margin-top: 150px;
+  margin-right: 240px;
 }
 
 .form {
@@ -73,4 +85,4 @@
 
 .button:hover {
   background-color: #232323;
-}
+} */

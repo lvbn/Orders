@@ -1,9 +1,23 @@
-/* .container {
-  height: 100%;
+.container {
+  /* height: 100%; */
+
+  background: #1E1E1E;
+  position: relative;
+
+  box-sizing: border-box;
+  flex-grow:1;
+  height: calc(100vh - 150px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
+
+  /* padding: 0 40px 0 40px; */
+  padding-left: 40px;
+  border: none;
+
+  margin-top: 150px;
+  margin-right: 240px;
 }
 
 .form {
@@ -47,6 +61,14 @@
   outline: solid 2px #68C4C6;
 }
 
+.errorMessage {
+  margin-top: 8px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  color:#d8206a;
+  font-weight: bold;
+}
+
 .button {
   color: #68C4C6;
   background-color: #1E1E1E;
@@ -65,4 +87,4 @@
 
 .button:hover {
   background-color: #232323;
-} */
+}

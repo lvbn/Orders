@@ -1,0 +1,30 @@
+.container {
+  background: #1E1E1E;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  border: none;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items:flex-end;
+
+  color: #68C4C6;
+}
+.pageTitle > p {
+  margin: 0 0 10px 0;
+  text-justify: initial;
+}
+
+.pageTitle > h1 {
+  margin: 0;
+}
