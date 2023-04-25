@@ -1,7 +1,8 @@
 const { Router } = require('express')
 const router = new Router()
+// const { requireAuth } = require('./middleware/authMiddleware')
 
-const { getOrders, postOrder, putOrder, signUp } = require('./controller/controller')
+const { getOrders, postOrder, putOrder, signUp, logIn } = require('./controller/controller')
 
 router.get('/orders', getOrders)
 
@@ -9,28 +10,9 @@ router.post('/orders', postOrder)
 
 router.put('/orders', putOrder)
 
-router.post('/', signUp)
+router.post('/signup', signUp)
 
-// router.post('/',
-// // signUp
-
-
-
-
-// (req, res) => {
-
-//   // res.setHeader('Set-Cookie', 'newUser=true');
-
-//   res.cookie('newUser', false)
-//   res.cookie('isEmployee', true, {
-//     maxAge: 1000* 60 * 60 * 24,
-//     // secure: true,
-//     // httpOnly: true
-//   })
-//   res.send('you cookie cookie');
-
-// }
-// )
+router.post('/login', logIn)
 
 router.get('/read-cookies', (req, res) => {
 

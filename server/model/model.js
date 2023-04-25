@@ -23,13 +23,23 @@ const handleErrors = (errors) => {
   // console.log(errors.message, errors.code)
   const errs = { email: '', password: ''};
 
-  // duplicate error  code
+  // wrong email when logging in
+  if (errors.message.includes('incorrect email')) {
+    errs.email = 'Email not registered.'
+  }
+
+  // wrong password when logging in
+  if (errors.message.includes('incorrect password')) {
+    errs.password = 'Wrong password.'
+  }
+
+  // Email already taken on signup
   if (errors.code === 11000) {
     errs.email = 'Email already used. Please choose a different one.'
     return errs
   }
 
-  // validation errors
+  // Errors on signup
   if (errors.message.includes('user validation failed')) {
    Object.values(errors.errors).forEach(({properties}) => {
     errs[properties.path] = properties.message;
@@ -97,7 +107,6 @@ const updateOne = async (idAndField) => {
 
 
 const createUser = async (email, password) => {
-  // console.log('signup request - model')
   let errors;
   try {
     const user = await User.create({
@@ -116,4 +125,34 @@ const createUser = async (email, password) => {
   }
 }
 
-module.exports = { getAll, postOne, updateOne, createUser }
+const logInUser = async (email, password) => {
+    let errors;
+    try {
+      const user = await User.login(email, password)
+      return user
+    } catch (error) {
+      errors = handleErrors(error)
+    }
+    if (errors) {
+      return errors;
+    }
+  }
+
+
+// const logInUser = async (email, password) => {
+//   const response = {}
+//   // console.log('2')
+//   try {
+//     const user = await User.login(email, password)
+//     // console.log(user)
+//     response.user = user._id
+//   } catch (error) {
+//     response.error = error
+//   }
+//   // console.log('response::: ', response.error)
+//   return response;
+// }
+
+
+
+module.exports = { getAll, postOne, updateOne, createUser,  logInUser}

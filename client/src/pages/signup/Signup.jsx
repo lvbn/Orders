@@ -26,7 +26,7 @@ export default function Signup() {
     e.preventDefault()
     // console.log(newUser)
 
-    const baseUrl = 'http://127.0.0.1:3000'
+    const baseUrl = 'http://127.0.0.1:3000/signup'
 
     try {
       await fetch(baseUrl, {

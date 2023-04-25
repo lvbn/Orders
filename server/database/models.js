@@ -1,5 +1,6 @@
 const { mongoose } = require('./db')
 const { isEmail } = require('validator')
+const bcrypt = require('bcrypt')
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -15,6 +16,21 @@ const userSchema = new mongoose.Schema({
     minlength: [6, 'Minimum password length is 6 characters.']
   }
 });
+
+// static method
+userSchema.statics.login = async function (email, password) {
+  const user = await this.findOne({ email })
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    // return {error: 'incorrect password'}
+    throw new Error('incorrect password')
+  }
+  // return {error: 'incorrect email'}
+  throw new Error('incorrect email')
+}
 
 const orderSchema = new mongoose.Schema({
   id: Number,
