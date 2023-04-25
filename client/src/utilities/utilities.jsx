@@ -15,3 +15,13 @@ export const dateFormater = (date) => {
   const d = new Date(date)
   return d.toLocaleDateString()
 }
+
+// https://github.com/WebDevSimplified/react-ts-shopping-cart/blob/main/src/utilities/formatCurrency.ts
+const CURRENCY_FORMATTER = new Intl.NumberFormat(undefined, {
+  currency: "USD",
+  style: "currency",
+})
+
+export function formatCurrency(number) {
+  return CURRENCY_FORMATTER.format(number)
+}

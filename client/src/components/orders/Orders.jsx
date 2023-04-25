@@ -8,7 +8,8 @@ import {
   payment_status,
   stage_1,
   stage_2,
-  stage_3
+  stage_3,
+  formatCurrency
 } from '../../utilities/utilities'
 
 
@@ -89,7 +90,7 @@ export default function Orders() {
                   <td>{order.ourClient}</td>
                   <td>{dateFormater(order.date)}</td>
                   <td>{order.quantity}</td>
-                  <td>{order.charge}</td>
+                  <td>{formatCurrency(order.charge)}</td>
 
                   <td className={styles.selectContainer}>{
                     <select
