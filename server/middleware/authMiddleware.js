@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
 
+// the following middleware is not yet fully implemented
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt
 

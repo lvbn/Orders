@@ -22,7 +22,7 @@ const getOrders = async (req, res) => {
 }
 
 const postOrder = (req, res) => {
-  // console.log('reached the controller', req.body)
+  console.log('reached the controller', req.body)
   try {
     const order = postOne(req.body)
     res.status(201)

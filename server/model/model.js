@@ -49,14 +49,6 @@ const handleErrors = (errors) => {
   return errs;
 }
 
-// // create token
-// const maxAge = 3 * 24 * 60 * 60;
-// const createToken = (id) => {
-//   return jwt.sign({ id }, 'the dashboard secret', {
-//     expiresIn: maxAge
-//   })
-// }
-
 // HTTP REQUESTS
 
 const getAll = async () => {
@@ -65,7 +57,6 @@ const getAll = async () => {
 }
 
 const postOne = async (order) => {
-  // console.log('in the model: ', order)
   try {
     const newOrder = await Orders.create({
       id: order.id,
@@ -116,8 +107,6 @@ const createUser = async (email, password) => {
     return user;
   } catch (error) {
     errors = handleErrors(error)
-    // console.log('error - model: ', errors)
-    // return errors
   }
 
   if (errors) {
@@ -137,22 +126,6 @@ const logInUser = async (email, password) => {
       return errors;
     }
   }
-
-
-// const logInUser = async (email, password) => {
-//   const response = {}
-//   // console.log('2')
-//   try {
-//     const user = await User.login(email, password)
-//     // console.log(user)
-//     response.user = user._id
-//   } catch (error) {
-//     response.error = error
-//   }
-//   // console.log('response::: ', response.error)
-//   return response;
-// }
-
 
 
 module.exports = { getAll, postOne, updateOne, createUser,  logInUser}
