@@ -24,7 +24,6 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log(newUser)
 
     const baseUrl = 'http://127.0.0.1:3000/login'
 

@@ -15,18 +15,7 @@ const orders = (state = initialState, action) => {
     case ADD_ORDERS:
       return [...action.payload];
 
-    // case UPDATE_PAYMENT_STATUS:
-    //   return state.map(o => {
-    //     if (o.id === action.payload.id) {
-    //       o.payment = action.payload.payment
-    //       return o;
-    //     } else {
-    //       return o;
-    //     }
-    //   });
-
     case UPDATE_STATUS:
-
       const [keys, values] = Object.entries(action.payload);
       return state.map(o => {
         if (o.id === action.payload.id) {

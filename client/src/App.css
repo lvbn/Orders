@@ -3,14 +3,6 @@
 }
 
 .App {
-  /* position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  overflow: hidden; */
-
   position: absolute;
   right: 0;
   left: 0;

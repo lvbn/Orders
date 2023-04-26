@@ -2,7 +2,6 @@
   background: #1E1E1E;
 
   box-sizing: border-box;
-  /* width: 70vw; */
   flex-grow:1;
   height: calc(100vh - 150px);
   display: flex;
@@ -10,7 +9,6 @@
   justify-content: flex-start;
   align-items: center;
 
-  /* padding: 0 40px 0 40px; */
   padding-left: 40px;
   border: none;
 

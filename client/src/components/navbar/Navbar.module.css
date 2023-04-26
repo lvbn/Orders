@@ -1,5 +1,4 @@
 .container {
-  /* tirar o position: absolute para a navbar ficar no lugar certo na versao dois deste projeto */
   position: absolute;
   top: 0;
   display: flex;

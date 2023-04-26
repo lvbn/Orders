@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import styles from './AddOrder.module.css'
-import Selection from '../selection/Selection';
 import { payment_status, fullfilment_status, delivery_status } from '../../utilities/utilities';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
@@ -36,7 +35,8 @@ export default function AddOrder() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const baseUrl = 'http://localhost:3000'
+    // const baseUrl = 'http://localhost:3000'
+    const baseUrl = import.meta.env.VITE_BASE_URL
 
     const postOrder = async (order) => {
       const response = await fetch(baseUrl + '/orders', {
