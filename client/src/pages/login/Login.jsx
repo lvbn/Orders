@@ -23,37 +23,71 @@ export default function Login() {
   }
 
   const handleSubmit = async (e) => {
+    // e.preventDefault()
+
+    // const baseUrl = 'http://127.0.0.1:3000/login'
+
+    // try {
+    //   const res = await fetch(baseUrl, {
+    //     method: "POST",
+    //     body: JSON.stringify(newUser),
+    //     headers: {
+    //       "Content-type": "application/json"
+    //     },
+    //     credentials: 'include'
+    //   })
+    //   console.log('-->', res)
+
+    //   const data = await res.json()
+
+    //   if (data.user) {
+    //     navigate('/orders')
+    //     console.log(data.user)
+    //   }
+    //   if (data.response && (data.response.email || data.response.password)) {
+    //       setEmailMessageError(data.response.email)
+    //       setPasswordMessageError(data.response.password)
+    //     } else {
+    //       setEmailMessageError('ok')
+    //       setPasswordMessageError('ok')
+    //       setTimeout(() => {
+    //         if (data.user) navigate('/orders')
+    //       }, 1000)
+    //     }
+    // } catch (error) {
+    //   console.log(error)
+    // }
+
+
     e.preventDefault()
 
+    setEmailMessageError(null)
+    setPasswordMessageError(null)
+
     const baseUrl = 'http://127.0.0.1:3000/login'
+    // const baseUrl = import.meta.env.VITE_BASE_URL + '/signup'
 
     try {
-      const res = await fetch(baseUrl, {
+      await fetch(baseUrl, {
         method: "POST",
+        mode: 'cors',
         body: JSON.stringify(newUser),
         headers: {
-          "Content-type": "application/json"
+          "Content-type": "application/json",
         },
         credentials: 'include'
       })
-      console.log('-->', res)
-
-      const data = await res.json()
-
-      if (data.user) {
-        navigate('/orders')
-        console.log(data.user)
-      }
-      if (data.response && (data.response.email ||  data.response.password)) {
-          setEmailMessageError(data.response.email)
-          setPasswordMessageError(data.response.password)
-        } else {
-          setEmailMessageError('ok')
-          setPasswordMessageError('ok')
-          setTimeout(() => {
-            if (data.user) navigate('/orders')
-          }, 1000)
+      .then(async response => {
+        console.log('RESPONSE: ', response)
+        const data = await response.json()
+        console.log('DATA: ', data)
+        if (data.user) {
+          console.log(data.user)
+          navigate('/orders')
         }
+        if (data.email) setEmailMessageError(data.email)
+        if (data.password) setPasswordMessageError(data.password)
+      })
     } catch (error) {
       console.log(error)
     }

@@ -7,15 +7,16 @@ const requireAuth = (req, res, next) => {
   if (token) {
     jwt.verify(token, 'secret', (error, decodedToken) => {
       if (error) {
-        console.log(error)
-        res.redirect('/login')
+        console.log('Error 1: ', error)
+        // res.redirect('/login')
       } else {
-        console.log(decodedToken)
+        console.log('Success 1: ', decodedToken)
         next()
       }
     })
   } else {
-    res.redirect('/login')
+    console.log('Error 2')
+    // res.redirect('/login')
   }
 }
 

@@ -35,8 +35,8 @@ export default function AddOrder() {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    // const baseUrl = 'http://localhost:3000'
-    const baseUrl = import.meta.env.VITE_BASE_URL
+    const baseUrl = 'http://127.0.0.1:3000'
+    // const baseUrl = import.meta.env.VITE_BASE_URL
 
     const postOrder = async (order) => {
       const response = await fetch(baseUrl + '/orders', {
@@ -44,7 +44,7 @@ export default function AddOrder() {
         body: JSON.stringify(order),
         headers: {
           "Content-type": "application/json"
-        }
+        },
       })
       return await response.json()
     }

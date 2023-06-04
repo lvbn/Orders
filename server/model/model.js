@@ -7,97 +7,98 @@ const bcrypt = require('bcrypt')
 // these middlewares have to be declared before compiling a model
 // https://mongoosejs.com/docs/middleware.html#defining
 
-// hashing password
-userSchema.pre('save', async function (next) {
-  const salt = await bcrypt.genSalt()
-  this.password = await bcrypt.hash(this.password, salt)
-  next()
-})
+// // hashing password
+// userSchema.pre('save', async function (next) {
+//   const salt = await bcrypt.genSalt()
+//   this.password = await bcrypt.hash(this.password, salt)
+//   next()
+// })
 
 // compiles the models
 const Orders = mongoose.model('Orders', orderSchema)
 const User = mongoose.model('user', userSchema)
 
-// handle errors
-const handleErrors = (errors) => {
-  // console.log(errors.message, errors.code)
-  const errs = { email: '', password: ''};
+// // handle errors
+// const handleErrors = (errors) => {
+//   // console.log(errors.message, errors.code)
+//   const errs = { email: '', password: ''};
 
-  // wrong email when logging in
-  if (errors.message.includes('incorrect email')) {
-    errs.email = 'Email not registered.'
-  }
+//   // wrong email when logging in
+//   if (errors.message.includes('incorrect email')) {
+//     errs.email = 'Email not registered.'
+//   }
 
-  // wrong password when logging in
-  if (errors.message.includes('incorrect password')) {
-    errs.password = 'Wrong password.'
-  }
+//   // wrong password when logging in
+//   if (errors.message.includes('incorrect password')) {
+//     errs.password = 'Wrong password.'
+//   }
 
-  // Email already taken on signup
-  if (errors.code === 11000) {
-    errs.email = 'Email already used. Please choose a different one.'
-    return errs
-  }
+//   // Email already taken on signup
+//   if (errors.code === 11000) {
+//     errs.email = 'Email already used. Please choose a different one.'
+//     return errs
+//   }
 
-  // Errors on signup
-  if (errors.message.includes('user validation failed')) {
-   Object.values(errors.errors).forEach(({properties}) => {
-    errs[properties.path] = properties.message;
-   })
-  }
+//   // Errors on signup
+//   if (errors.message.includes('user validation failed')) {
+//    Object.values(errors.errors).forEach(({properties}) => {
+//     errs[properties.path] = properties.message;
+//    })
+//   }
 
-  return errs;
-}
+//   return errs;
+// }
 
 // HTTP REQUESTS
 
-const getAll = async () => {
-  const orders = await Orders.find()
-  return orders
-}
+// const getAll = async () => {
+//   const orders = await Orders.find()
+//   return orders
+// }
 
-const postOne = async (order) => {
-  try {
-    const newOrder = await Orders.create({
-      id: order.id,
-      ourClient: order.ourClient,
-      date: order.date,
-      quantity: order.quantity,
-      charge: order.charge,
-      payment: order.payment,
-      fullfilment: order.fullfilment,
-      finalClient: order.finalClient,
-      delivery: order.delivery
-    })
-    return newOrder
-  } catch (error) {
-    console.log(error)
-    const errors = handleErrors(error)
-    return errors
-  }
-}
+// const postOne = async (order) => {
+//   try {
+//     const newOrder = await Orders.create({
+//       id: order.id,
+//       ourClient: order.ourClient,
+//       date: order.date,
+//       quantity: order.quantity,
+//       charge: order.charge,
+//       payment: order.payment,
+//       fullfilment: order.fullfilment,
+//       finalClient: order.finalClient,
+//       delivery: order.delivery
+//     })
+//     return newOrder
+//   } catch (error) {
+//     console.log(error)
+//     const errors = handleErrors(error)
+//     return errors
+//   }
+// }
 
-const updateOne = async (idAndField) => {
-  // await Orders.updateOne({id: idAndField.id}, {payment: idAndField.payment})
-  // const doc = Orders.findOne({id: 1})
+// const updateOne = async (idAndField) => {
+//   // await Orders.updateOne({id: idAndField.id}, {payment: idAndField.payment})
+//   // const doc = Orders.findOne({id: 1})
 
-  const [keys, values] = Object.entries(idAndField);
-  // console.log('in the model: ', keys, values)
+//   const [keys, values] = Object.entries(idAndField);
+//   // console.log('in the model: ', keys, values)
 
-  // finding the document and saving it is the best supported method for updating docs.
-  // https://masteringjs.io/tutorials/mongoose/update
-  // const doc = await Orders.findOne({id: idAndField.id})
-  // doc[values[0]] = values[1];
-  // return await doc.save();
+//   // finding the document and saving it is the best supported method for updating docs.
+//   // https://masteringjs.io/tutorials/mongoose/update
+//   // const doc = await Orders.findOne({id: idAndField.id})
+//   // doc[values[0]] = values[1];
+//   // return await doc.save();
 
-  const doc = await Orders.findOne({id: idAndField.id})
-  doc[values[0]] = values[1];
-  await doc.save();
-  return {id: doc.id, [values[0]]: values[1]}
-}
+//   const doc = await Orders.findOne({id: idAndField.id})
+//   doc[values[0]] = values[1];
+//   await doc.save();
+//   return {id: doc.id, [values[0]]: values[1]}
+// }
 
 
 const createUser = async (email, password) => {
+  console.log('reached the model')
   let errors;
   try {
     const user = await User.create({
@@ -128,4 +129,4 @@ const logInUser = async (email, password) => {
   }
 
 
-module.exports = { getAll, postOne, updateOne, createUser,  logInUser}
+module.exports = { /* getAll, postOne, updateOne, */ createUser,  logInUser}

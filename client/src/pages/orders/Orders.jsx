@@ -19,7 +19,7 @@ export default function () {
         headers: {
           "Content-type": "application/json"
         },
-        // credentials: 'include'
+        credentials: 'include'
     })
       .then(response => {
         if (response.ok) {

@@ -24,41 +24,33 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // console.log(newUser)
+
+    setEmailMessageError(null)
+    setPasswordMessageError(null)
 
     const baseUrl = 'http://127.0.0.1:3000/signup'
+    // const baseUrl = import.meta.env.VITE_BASE_URL + '/signup'
 
     try {
       await fetch(baseUrl, {
         method: "POST",
+        mode: 'cors',
         body: JSON.stringify(newUser),
         headers: {
-          "Content-type": "application/json"
+          "Content-type": "application/json",
         },
         credentials: 'include'
       })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
+      .then(async response => {
+        console.log('RESPONSE: ', response)
+        const data = await response.json()
+        console.log('DATA: ', data)
+        if (data.user) {
+          console.log(data.user)
+          navigate('/login')
         }
-        throw new Error('fail to create new user')
-      })
-      .then(data => {
-        console.log('logando data: ', data, data.user)
-
-        if (data.responseUser && (data.responseUser.email ||  data.responseUser.password)) {
-          setEmailMessageError(data.responseUser.email)
-          setPasswordMessageError(data.responseUser.password)
-        } else {
-          setEmailMessageError('ok')
-          setPasswordMessageError('ok')
-          setTimeout(() => {
-            if (data.user) navigate('/login')
-          }, 1000)
-        }
-
-        // if (data.user) navigate('/orders')
-        // if (data.user) location.assign('/orders')
+        if (data.email) setEmailMessageError(data.email)
+        if (data.password) setPasswordMessageError(data.password)
       })
     } catch (error) {
       console.log(error)

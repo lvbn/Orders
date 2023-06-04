@@ -17,12 +17,14 @@ const orders = (state = initialState, action) => {
 
     case UPDATE_STATUS:
       const [keys, values] = Object.entries(action.payload);
-      return state.map(o => {
-        if (o.id === action.payload.id) {
-          o[values[0]] = values[1]
-          return o;
+      console.log('ACTION: ', action, 'KEYS: ', keys, 'VALUES: ', values)
+      return state.map(order => {
+        if (order.id === action.payload.id) {
+          // o[values[0]] = values[1]
+          order.payment = action.payload.payment
+          return order;
         } else {
-          return o;
+          return order;
         }
       });
 
