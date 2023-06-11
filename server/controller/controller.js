@@ -180,4 +180,9 @@ const logIn = async (req, res) => {
   }
 }
 
-module.exports = { getOrders, postOrder, putOrder, signUp, logIn }
+const logout = async (req, res) => {
+  res.cookie('jwt', '', { maxAge: 1 })
+  res.send({})
+}
+
+module.exports = { getOrders, postOrder, putOrder, signUp, logIn, logout }

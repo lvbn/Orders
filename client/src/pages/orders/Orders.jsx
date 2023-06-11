@@ -25,6 +25,7 @@ export default function () {
         if (response.ok) {
           return response.json()
         }
+        navigate('/login')
         throw new Error('unable to fetch data')
       })
       .then(data => {

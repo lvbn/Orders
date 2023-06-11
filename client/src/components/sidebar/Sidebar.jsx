@@ -20,6 +20,18 @@ export default function Sidebar() {
     navigate(path)
   }
 
+  const handleLogout = async () => {
+    fetch('http://127.0.0.1:3000/logout', {
+      method: "GET",
+        headers: {
+          "Content-type": "application/json"
+        },
+        credentials: 'include'
+    }).then(() => {
+      navigate('/')
+    })
+  }
+
   // for svg color correction read stackoverflow:
   // https://stackoverflow.com/questions/22252472/how-can-i-change-the-color-of-an-svg-element
   return (
@@ -40,7 +52,7 @@ export default function Sidebar() {
         <p>ORDERS</p>
       </div>
 
-      <div className={`${styles.menuItem} ${styles.logout}`}>
+      <div className={`${styles.menuItem} ${styles.logout}`} onClick={handleLogout}>
         <img src={logout} alt="logout" />
         <p>Logout</p>
       </div>
