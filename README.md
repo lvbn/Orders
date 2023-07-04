@@ -1,9 +1,6 @@
 # OrdersDashboard
 
-## Dashboard to manage orders.
-
-It contains two pages. One for the list of orders and one for order details.
-For the MVP, the implementation of these two pages is the goal.
+OrdersDashboard is a project thought to help e-commerces and business owners in general to manage incoming orders. Every time a new booking is realized, it can be seen in the orders table. If needed, a new order can be added manually by the user.
 
 ![Dashboard](https://user-images.githubusercontent.com/65773848/232928259-c80f36fc-c69f-4bd9-9c37-11be54c2b6fe.png)
 
