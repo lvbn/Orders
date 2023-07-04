@@ -38,7 +38,9 @@ The orders are coming straight from the users' e-commerce, but the application a
 ### `npm run dev`
 
 Runs the app in development mode.\
-Open [http://localhost:5173](http://localhost:5173) to view it in your browser.
+Open [http://127.0.0.1:5173](http://127.0.0.1:5173) to view it in your browser.
+
+ATTENTION: It has to be 127.0.0.1 instead of localhost due to CORS.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -47,4 +49,4 @@ You may also see any lint errors in the console.
 ### `npx nodemon`
 
 Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000) to view it in your browser.
