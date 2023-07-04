@@ -54,7 +54,7 @@ JWT tokens are used in two different situations:
 CORS are enabled. Orders coming from a different URL will only be accepted if the extern URL is specified in your .ENV file and the env variable is included in the origin array in the index.js file (in the server.)
 
 ## Getting it up and running
-###In the client directory:
+### In the client directory:
 
 #### `npm i`
 
@@ -70,6 +70,11 @@ ATTENTION: It has to be 127.0.0.1 instead of localhost due to CORS.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+### In the server directory:
+
+#### `npm i`
+
+install all backend dependencies
 
 #### `npx nodemon`
 
