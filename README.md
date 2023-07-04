@@ -19,6 +19,17 @@ NodeJS + Express
 
 MongoDB + Mongoose ODM
 
+### Extern Libraries
+
+bcrypt: hashes passwords
+validator: validates email addresses
+jsonwebtokens: creates and verifies tokens 
+cookie-parser: parses cookies
+cors: handles cross-origin resource sharing
+dotenv: handles environmental variables
+mongoose: ODM
+
+
 ## Features
 
 ### * Landing page:
