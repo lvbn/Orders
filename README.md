@@ -21,13 +21,14 @@ MongoDB + Mongoose ODM
 
 ### Extern Libraries
 
-bcrypt: hashes passwords <br></br>
-validator: validates email addresses <br></br>
-jsonwebtokens: creates and verifies tokens <br></br>
-cookie-parser: parses cookies <br></br>
-cors: handles cross-origin resource sharing <br></br>
-dotenv: handles environmental variables <br></br>
-mongoose: ODM
+1. bcrypt: hashes passwords 
+2. validator: validates email addresses 
+3. jsonwebtokens: creates and verifies tokens 
+4. cookie-parser: parses cookies 
+5. cors: handles cross-origin resource sharing 
+6. dotenv: handles environmental variables
+7. nodemon: runs the server
+8. mongoose: ODM
 
 
 ## Features
@@ -51,9 +52,15 @@ JWT tokens are used in two different situations:
 
 ### * CORS:
 CORS are enabled. Orders coming from a different URL will only be accepted if the extern URL is specified in your .ENV file and the env variable is included in the origin array in the index.js file (in the server.)
-## Available Scripts
 
-### `npm run dev`
+## Getting it up and running
+###In the client directory:
+
+#### `npm i`
+
+install all frontend dependencies
+
+#### `npm run dev`
 
 Runs the app in development mode.\
 Open [http://127.0.0.1:5173](http://127.0.0.1:5173) to view it in your browser.
@@ -64,7 +71,7 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 
-### `npx nodemon`
+#### `npx nodemon`
 
 Runs the app in development mode.\
 Open [http://127.0.0.1:3000](http://127.0.0.1:3000) to view it in your browser.
