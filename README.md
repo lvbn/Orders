@@ -51,7 +51,7 @@ JWT tokens are used in two different situations:
 2. Decoding the token before every get request and checking if the user has permission to access the requested data. (Not yet complete.)
 
 ### * CORS:
-CORS are enabled. Orders coming from a different URL will only be accepted if the extern URL is specified in your .ENV file and the env variable is included in the origin array in the index.js file (in the server.)
+CORS are enabled. Orders coming from a different URL will only be accepted if the external URL is specified in your .ENV file and the env variable is included in the origin array in the index.js file (in the server.)
 
 ## Getting it up and running
 ### In the client directory:
@@ -59,6 +59,10 @@ CORS are enabled. Orders coming from a different URL will only be accepted if th
 #### `npm i`
 
 install all frontend dependencies
+
+#### Environmental Variables
+
+Assign 'http://127.0.0.1:3000' to the `VITE_BASE_URL` env variable.
 
 #### `npm run dev`
 
@@ -75,6 +79,16 @@ You may also see any lint errors in the console.
 #### `npm i`
 
 install all backend dependencies
+
+#### Environmental Variables
+
+Assign 'http://127.0.0.1:5173' to the `DASHBOARD_CLIENT` env variable.
+If you are willing to receive orders from an external URL, create variables from those URLs as well.
+Add all of them to the origin array in the index.js file.
+
+#### DB Connection
+
+Make sure your URI is correct in the db.js files (You must have created your own MongoDB instance.)
 
 #### `npx nodemon`
 
