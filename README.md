@@ -33,6 +33,8 @@ Here the user can see all the orders, keep track, and update several changing st
 ### * New Order page:
 The orders are coming straight from the users' e-commerce, but the application also offers the possibility to book a new order manually.
 
+### * JWT Authentication:
+Two main middlewares compose the authentication procedures. One requires 
 ## Available Scripts
 
 ### `npm run dev`

@@ -4,6 +4,7 @@ const { userSchema, orderSchema } = require('../database/models')
 const { mongoose } = require('../database/db')
 const User = mongoose.model('user', userSchema)
 
+
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt
 
@@ -23,6 +24,7 @@ const requireAuth = (req, res, next) => {
   }
 }
 
+// used to check permissions
 const checkUser = (req, res, next) => {
   const token = req.cookies.jwt
 
