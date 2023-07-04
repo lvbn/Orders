@@ -21,12 +21,12 @@ MongoDB + Mongoose ODM
 
 ### Extern Libraries
 
-bcrypt: hashes passwords
-validator: validates email addresses
-jsonwebtokens: creates and verifies tokens 
-cookie-parser: parses cookies
-cors: handles cross-origin resource sharing
-dotenv: handles environmental variables
+bcrypt: hashes passwords <br></br>
+validator: validates email addresses <br></br>
+jsonwebtokens: creates and verifies tokens <br></br>
+cookie-parser: parses cookies <br></br>
+cors: handles cross-origin resource sharing <br></br>
+dotenv: handles environmental variables <br></br>
 mongoose: ODM
 
 
