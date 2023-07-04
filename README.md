@@ -16,7 +16,7 @@ NodeJS + Express
 
 MongoDB + Mongoose ODM
 
-### Extern Libraries
+### External Libraries
 
 1. bcrypt: hashes passwords 
 2. validator: validates email addresses 
