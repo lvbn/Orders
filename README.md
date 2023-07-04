@@ -37,6 +37,9 @@ The orders are coming straight from the users' e-commerce, but the application a
 JWT tokens are used in two different situations:
 1. requires the user to be Authenticated before loading the orders.
 2. Decoding the token before every get request and checking if user has permission to access the requested data. (Not yer complete.)
+
+### * CORS:
+CORS are enabled. Orders coming from a different URL will only be accepted if the extern URL is specified in your .ENV file and the env variable is included in the origin array in the index.js file (in the server.)
 ## Available Scripts
 
 ### `npm run dev`
