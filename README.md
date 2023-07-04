@@ -56,15 +56,15 @@ CORS are enabled. Orders coming from a different URL will only be accepted if th
 ## Getting it up and running
 ### In the client directory:
 
-#### `npm i`
+#### * `npm i`
 
 install all frontend dependencies
 
-#### Environmental Variables
+#### * Environmental Variables
 
 Assign 'http://127.0.0.1:3000' to the `VITE_BASE_URL` env variable.
 
-#### `npm run dev`
+#### * `npm run dev`
 
 Runs the app in development mode.\
 Open [http://127.0.0.1:5173](http://127.0.0.1:5173) to view it in your browser.
@@ -76,21 +76,21 @@ You may also see any lint errors in the console.
 
 ### In the server directory:
 
-#### `npm i`
+#### * `npm i`
 
 install all backend dependencies
 
-#### Environmental Variables
+#### * Environmental Variables
 
 Assign 'http://127.0.0.1:5173' to the `DASHBOARD_CLIENT` env variable.
 If you are willing to receive orders from an external URL, create variables from those URLs as well.
 Add all of them to the origin array in the index.js file.
 
-#### DB Connection
+#### * DB Connection
 
 Make sure your URI is correct in the db.js files (You must have created your own MongoDB instance.)
 
-#### `npx nodemon`
+#### * `npx nodemon`
 
 Runs the app in development mode.\
 Open [http://127.0.0.1:3000](http://127.0.0.1:3000) to view it in your browser.
